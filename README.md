@@ -15,25 +15,9 @@ Enterprise-grade web application platform built with microservices architecture,
 
 ##  System Architecture
 
-### Infrastructure Components
+##  Architecture Diagram
 
-```
-GitHub → Docker Hub → Ingress Controller → Kubernetes Cluster
-   ↓         ↓              ↓                      ↓
- Code →   Images →      Load Balancer →    Service Mesh
-                                              ↓
-                                    ┌─────────┴─────────┐
-                                    ↓                   ↓
-                              Web Services      API Services
-                            (3 replicas)        (3 replicas)
-                                    ↓                   ↓
-                              ConfigMaps & Secrets
-                                    ↓
-                            Headless DB Service
-                                    ↓
-                          StatefulSet Database
-                         (Persistent Volumes)
-```
+![schema 7](./docs/arch.png)
 
 ### Service Topology
 
@@ -74,9 +58,7 @@ GitHub → Docker Hub → Ingress Controller → Kubernetes Cluster
 - **PersistentVolumes**: Durable storage with dynamic provisioning
 - **Ingress**: Path-based routing with Nginx controller
 
-##  Architecture Diagram
 
-![schema 7](./docs/arch.png)
 
 ### Traffic Flow
 1. **Git Push** → Triggers automated Docker image build
